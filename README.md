@@ -36,7 +36,10 @@ python train_pointcloud.py --config configs/unsupervised_pretrain/sab_pointnet_{
 python valid_all_in_one.py --config configs/evaluation/valid_all_in_one.json --resume pretrained_ckpts/pretrained/{SHAPE_CATEGORY}/checkpoint-epoch70.pth --task_type correspondence
 ```
 
-To correctly run the evaliation code, you need to set the data category in the config file as well. I currently provided a pretrained model on the Airplane data. More pretrained models will be released later.
+To correctly run the evaliation code, you need to set the data category in the config file as well. I currently provided a pretrained model on the Airplane data. More pretrained models will be released later. 
+
+
+## To be released later...
 
 #### Registration task on ShapeNetPart models:
 

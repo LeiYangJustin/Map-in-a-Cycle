@@ -20,7 +20,6 @@ import pointnet3 as module_arch
 
 # dataloader
 import pointcloud_data_loaders.shapenet_dataloader as module_pc_data
-# import pointcloud_data_loaders.pc_data_loader as module_pc_data
 
 #
 from parse_config import ConfigParser
