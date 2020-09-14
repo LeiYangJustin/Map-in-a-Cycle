@@ -1,0 +1,57 @@
+{
+    "n_gpu": 1,
+    "batch_size": 8,
+    "bias_lr": 0.001,
+	"arch": {
+        "type": "Pointnet2MSG_yanx27_seg_ft"
+    },
+    "dataset": {
+        "type": "ShapeNetPartSegLoader",
+        "num_lbl_classes": 3,
+        "args": {
+            "num_points": 1024,
+            "category": "Earphone",
+            "root": "../DataModelNet/shapenetcore_partanno_segmentation_benchmark_v0_normal",
+            "rotsd": 5,
+            "transsd":0.02,
+            "scale_hi":1.1, 
+            "scale_lo":0.9
+        }
+    },
+    "optimizer": {
+        "type": "Adam",
+        "args": {
+            "lr": 0.001,
+            "weight_decay": 0,
+            "amsgrad": true
+        }
+    },
+    "visualize":{
+        "visualize": false,
+        "num_examples": 0
+    },
+    "metrics": [
+
+    ],
+    "lr_scheduler": {
+        "type": "MultiStepLR",
+        "args": {
+            "milestones":  [60],
+            "gamma": 0.1
+        }
+    },
+    "trainer": {
+        "epochs": 400,
+        "save_dir": "saved/",
+        "save_period": 100,
+        "verbosity": 2,
+        "monitor": "off",
+        "early_stop": 10,
+        "tensorboardX": false,
+        "log_dir": "saved/",
+        "result_dir": "saved/"
+    },
+    "evaluation": {
+        "mini_eval": true
+    }
+}

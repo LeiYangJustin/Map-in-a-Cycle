@@ -1,0 +1,89 @@
+{
+    "n_gpu": 1,
+    "batch_size": 8,
+    "bias_lr": 0.0001,
+    "arch": {
+        "type": "Pointnet2MSG_yanx27_segmentation",
+        "args": {
+            "additional_channels": 67
+        }
+    },
+    "pretrain": {
+        "type": "Pointnet2MSG_yanx27_sab_partseg",
+        "args": {
+            "additional_channels": 3,
+            "output_channels": 64
+        }
+    },
+    "dataset": {
+        "type": "ShapeNetPartSegLoader",
+        "num_lbl_classes": 3,
+        "args": {
+            "num_points": 1024,
+            "category": "Rocket",
+            "root": "../DataModelNet/shapenetcore_partanno_segmentation_benchmark_v0_normal",
+            "rotsd": 15,
+            "transsd":0.2,
+            "scale_hi":1.25, 
+            "scale_lo":0.8
+        }
+    },
+    "optimizer": {
+        "type": "Adam",
+        "args": {
+            "lr": 0.0005,
+            "weight_decay": 0,
+            "amsgrad": true
+        }
+    },
+    "loss": "DVE_loss",
+    "loss_args": {
+        "normalize_vectors": false,
+        "temperature": 0.05,
+        "sink_tau": [0.3,0.3],
+        "sink_iters":[30,30],
+        "lambda_lc":0.02,
+        "lambda_qap":0.0,
+        "lambda_ln":0.0,
+        "local_args":{
+            "dist_thres":0.2, 
+            "mode":"distance", 
+            "loss_mode":"L1"
+        }
+    },
+    "visualize":{
+        "visualize": false,
+        "num_examples": 0
+    },
+    "metrics": [
+
+    ],
+    "visualizations": [
+        "sphere_colormap",
+        "sphere_rand_proj_colormap"
+    ],
+    "lr_scheduler": {
+        "type": "MultiStepLR",
+        "args": {
+            "milestones":  [],
+            "gamma": 0.1
+        }
+    },
+    "trainer": {
+        "epochs": 300,
+        "save_dir": "saved/",
+        "save_period": 30,
+        "verbosity": 2,
+        "monitor": "off",
+        "early_stop": 10,
+        "tensorboardX": false,
+        "log_dir": "saved/",
+        "result_dir": "saved/"
+    },
+    "evaluation": {
+        "mini_eval": true,
+        "num_refs": 3,
+        "temperature": 0.05,
+        "evaluation_type": "seg_label_transfer"
+    }
+}

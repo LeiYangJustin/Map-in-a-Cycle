@@ -1,0 +1,35 @@
+{
+    "n_gpu": 1,
+    "batch_size": 14,
+    "arch": {
+        "type": "SetTransformer",
+        "args": {
+            "dim_input": 3, 
+            "num_outputs": 2048, 
+            "dim_output": 64,
+            "num_inds": 128, 
+            "dim_hidden": 64, 
+            "num_heads": 4, 
+            "ln": true
+        }
+    },
+    "dataset": {
+        "type": "ShapeNetPartSeg_h5",
+        "num_lbl_classes": 4,
+        "args": {
+            "num_points": 2048,
+            "category": 0,
+            "root": "../DataModelNet/shapenet_partseg_ply_hdf5_2048"
+        }
+    },
+    "visualize":{
+        "visualize": false,
+        "num_examples": 0
+    },
+    "tester": {
+        "save_dir": "saved/",
+        "log_dir": "saved/",
+        "result_dir": "saved/",
+        "name": "tsne_visualization"
+    }
+}

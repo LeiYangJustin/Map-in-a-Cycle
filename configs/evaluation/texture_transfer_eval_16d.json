@@ -1,0 +1,46 @@
+{
+    "n_gpu": 1,
+    "batch_size": 14,
+    "arch": {
+        "type": "Pointnet2MSGFC",
+        "args": {
+            "input_channels": 0,
+            "para_configs":{
+                "npoints": [1024, 512, 256, 128],
+                "radius": [[0.05, 0.1], [0.1, 0.2], [0.2, 0.4], [0.4, 0.8]],
+                "nsamples": [[16,32], [16,32], [16,32], [16,32]],
+                "mlp": [[[16, 16, 32], [32, 32, 64]], 
+                        [[64, 64, 128], [64, 96, 128]],
+                        [[128, 128, 128], [128, 196, 256]], 
+                        [[256, 256, 256], [256, 384, 512]]],
+                "fp_mlp": [[128, 64], [256, 128], [256, 256], [512, 256]],
+                "output_channel": 16,
+                "use_xyz": true
+            }
+        }
+    },
+    "dataset": {
+        "type": "ShapeNetPartSeg_h5",
+        "num_lbl_classes": 4,
+        "args": {
+            "num_points": 2048,
+            "category": 0,
+            "root": "../DataModelNet/shapenet_partseg_ply_hdf5_2048"
+        }
+    },
+    "loss_args": {
+        "normalize_vectors": false,
+        "temperature": 0.05
+    },
+    "visualize":{
+        "visualize": false,
+        "num_examples": 0
+    },
+    "tester": {
+        "save_dir": "saved/",
+        "log_dir": "saved/",
+        "result_dir": "saved/",
+        "name": "test_texture_transfer",
+        "num_clusters": 128
+    }
+}
