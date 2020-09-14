@@ -1,3 +1,5 @@
+## This file is adopted from SetTransformer github repo: https://github.com/juho-lee/set_transformer
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
