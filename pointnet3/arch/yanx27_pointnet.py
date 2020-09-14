@@ -1,3 +1,5 @@
+## This file is partly adapted from PointNet++ pytorch implementation from this github repo https://github.com/yanx27/Pointnet_Pointnet2_pytorch
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
