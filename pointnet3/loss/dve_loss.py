@@ -73,7 +73,6 @@ class DVE_loss(nn.Module):
                 f2 = F.normalize(f2, p=2, dim=0) * 20
                 fa = F.normalize(fa, p=2, dim=0) * 20
 
-            print("reconstruction")
             ## f1 && fa correlation
             corr_1a = torch.matmul(f1.t(), fa)/self.temperature ## [C, M]T X [C, N] = [M, N]
             smcorr_1a = F.softmax(corr_1a, dim=1)
@@ -154,19 +153,14 @@ class DVE_loss(nn.Module):
         print("--------LOSS with DVE: {}--------".format(loss/B))
         total_loss = loss + self.lambda_lc*Lc
 
-        print("epoch", epoch)
-        print("loss ", loss/B)
-        print("Lc ", Lc/B)
-        print("total_loss ", total_loss/B)
-
         output_loss = {
             'total_loss': total_loss/B,
             'cycle_loss': loss/B, 
             'perm_loss': Lc/B, 
-            'smcorr_to_I': perm_to_I/B,
         }
         output_info = {
             'correct_match': correct_match/B, 
+            'smcorr_to_I': perm_to_I/B,
         }
         return output_loss, output_info
 

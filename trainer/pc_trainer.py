@@ -138,11 +138,7 @@ class PCTrainer(BasePCTrainer):
         avg_loss = AverageMeter()
         avg_total_loss = AverageMeter()
         avg_perm_loss = AverageMeter()
-        avg_normal_loss = AverageMeter()
-        avg_sharp_loss = AverageMeter()
         avg_matchsize = AverageMeter()
-        avg_diff_via_recon = AverageMeter()
-        avg_ch_dist = AverageMeter()
 
 
         total_metrics = [AverageMeter() for a in range(len(self.metrics))]
@@ -207,7 +203,6 @@ class PCTrainer(BasePCTrainer):
             avg_total_loss.update(total_loss.item(), data.size(0))
             avg_perm_loss.update(output_loss['perm_loss'].item(), data.size(0))
             avg_matchsize.update(output_info['correct_match'], data.size(0))
-            avg_diff_via_recon.update(output_info['diff_via_recon'].item(), data.size(0))
 
             for i, m in enumerate(self._eval_metrics(output, meta)):
                 total_metrics[i].update(m, data.size(0))
@@ -261,9 +256,7 @@ class PCTrainer(BasePCTrainer):
         log = {**log, 
             'total_loss': avg_total_loss.avg, 
             'perm_loss': avg_perm_loss.avg, 
-            'normal_loss': avg_normal_loss.avg, 
             'match_size': avg_matchsize.avg, 
-            'diff_via_recon': avg_diff_via_recon.avg,
         }
         
         duration = time.strftime('%Hh%Mm%Ss', time.gmtime(time.time() - train_tic))

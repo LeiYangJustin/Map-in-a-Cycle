@@ -88,15 +88,15 @@ class BasePCTrainer:
         not_improved_count = 0
         for epoch in range(self.start_epoch, self.epochs + 1):
             
-            if self.do_validation:
-                ## validation mode
-                val_result = self._segmentation_valid_epoch(epoch)
-                log = {'val_epoch': epoch}
-                # input()
-                for key, value in val_result.items():
-                    log[key] = value
-                for key, value in log.items():
-                    self.logger.info('    {:15s}: {}'.format(str(key), value))
+            # if self.do_validation:
+            #     ## validation mode
+            #     val_result = self._segmentation_valid_epoch(epoch)
+            #     log = {'val_epoch': epoch}
+            #     # input()
+            #     for key, value in val_result.items():
+            #         log[key] = value
+            #     for key, value in log.items():
+            #         self.logger.info('    {:15s}: {}'.format(str(key), value))
 
             result = self._train_epoch(epoch)
             # save logged informations into log dict
