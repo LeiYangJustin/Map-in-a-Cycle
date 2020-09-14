@@ -1,3 +1,5 @@
+## This file is adopted from DVE's github repo: https://github.com/jamt9000/DVE
+
 import torch.nn.functional as F
 import torch.nn as nn
 import time
