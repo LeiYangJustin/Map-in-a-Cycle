@@ -258,7 +258,6 @@ class AllInOneChecker():
 
         self.data_loader = self.initialize_dataloader(self.dataloader_params)
         print("data loader initialized")
-        # input()
         for i in range(max_iter):
             self.iteration = i
             if self.task_type == "correspondence":

@@ -2,7 +2,7 @@ import numpy as np
 import pointcloud_utils.farthest_point_sampling as fps
 import torch
 import torch.nn.functional as F
-from pointnet3.loss.chamfer import *
+# from pointnet3.loss.chamfer import *
 from scipy.spatial.transform import Rotation as RotTool
 from PIL import Image
 from sklearn.neighbors import NearestNeighbors
