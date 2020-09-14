@@ -262,17 +262,14 @@ class PCTrainer(BasePCTrainer):
         duration = time.strftime('%Hh%Mm%Ss', time.gmtime(time.time() - train_tic))
         print(f"training epoch took {duration}")
 
-        # ## validation
-        # val_tic = time.time()
-        # if self.do_validation:
-        #     val_log = self._valid_epoch(epoch)
-        #     log = {**log, **val_log}
-        # duration = time.strftime('%Hh%Mm%Ss', time.gmtime(time.time() - val_tic))
-        # print(f"validation epoch took {duration}")
-
         if self.lr_scheduler is not None:
             self.lr_scheduler.step(epoch - 1)
         return log
+
+
+
+
+
 
     def _segmentation_valid_epoch(self, epoch):
 
