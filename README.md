@@ -154,4 +154,6 @@ If you have any questions, please feel free to drop an email: yanglei.dalian@gma
 
 5. ModelNet40 Dataset: https://modelnet.cs.princeton.edu/
 
+6. Sinkhorn normalization code from https://github.com/gomena/sinkhorn_networks/
+
 Thank them for sharing their codes and data!
