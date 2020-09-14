@@ -1,0 +1,10 @@
+./test_codes
+__pycache__/*
+*/__pycache__/*
+*/*/__pycache__/*
+*.log
+*.obj
+*.png
+*.pth
+*.txt
+saved
