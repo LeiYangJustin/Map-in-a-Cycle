@@ -33,7 +33,7 @@ python train_pointcloud.py --config configs/unsupervised_pretrain/sab_pointnet_{
 #### Evaluation of cycle correspondences:
 
 ```
-Point-DVE-release$ python valid_all_in_one.py --config configs/evaluation/valid_all_in_one.json --resume pretrained_ckpts/pretrained/{SHAPE_CATEGORY}/checkpoint-epoch70.pth --task_type correspondence
+python valid_all_in_one.py --config configs/evaluation/valid_all_in_one.json --resume pretrained_ckpts/pretrained/{SHAPE_CATEGORY}/checkpoint-epoch70.pth --task_type correspondence
 ```
 
 To correctly run the evaliation code, you need to set the data category in the config file as well.
